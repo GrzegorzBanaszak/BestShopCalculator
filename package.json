@@ -1,0 +1,20 @@
+{
+  "name": "bestshopcalculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "sass --watch scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrzegorzBanaszak/BestShopCalculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrzegorzBanaszak/BestShopCalculator/issues"
+  },
+  "homepage": "https://github.com/GrzegorzBanaszak/BestShopCalculator#readme"
+}
