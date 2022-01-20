@@ -3,7 +3,11 @@ const totalPrice = document.querySelector("#total-price")
 const packageInput = document.querySelector('#package').children.item(0);
 const packageList = document.querySelector('#package').children.item(1);
 const accounting = document.querySelector('#accounting')
+const accountingDisplay = document.querySelector("[data-id='accounting']")
 const terminal = document.querySelector('#terminal');
+const terminalDisplay = document.querySelector("[data-id='terminal']")
+const packageDisplay = document.querySelector("[data-id='package']")
+
 
 //Tablica wartości sumy
 let values = [
@@ -20,6 +24,16 @@ let values = [
   {
     name:"orders",
     type:"package",
+    price:0
+  },
+  {
+    name:"accounting",
+    type:"checkbox",
+    price:0
+  },
+  {
+    name:"terminal",
+    type:"checkbox",
     price:0
   },
 ]
@@ -136,3 +150,35 @@ function updatePackage({name,price}){
 }
 
 
+accounting.addEventListener('click',(e)=>{
+  if(e.target.checked){
+    setCheckbox(e.target.id,10)
+    accountingDisplay.style.display = "block"
+    updateTotalPrice()
+  }else{
+    setCheckbox(e.target.id,0)
+    accountingDisplay.style.display = "none"
+    updateTotalPrice()
+  }
+})
+
+terminal.addEventListener('click',(e)=>{
+  if(e.target.checked){
+    setCheckbox(e.target.id,10)
+    terminalDisplay.style.display = "block"
+    updateTotalPrice()
+  }else{
+    setCheckbox(e.target.id,0)
+    terminalDisplay.style.display = "none"
+    updateTotalPrice()
+  }
+})
+
+function setCheckbox(name,price){
+  const newValues = values.filter(x => x.name != name)
+    values = [...newValues,{
+    name,
+    type:"checkbox",
+    price
+  }]
+}
