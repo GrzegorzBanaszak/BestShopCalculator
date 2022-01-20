@@ -38,7 +38,6 @@ let values = [
   },
 ]
 
-
 //Funkcja obsługi inputów
 function setInputFilter(textbox, inputFilter,itemText) {
   ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
@@ -133,7 +132,11 @@ Array.from(packageList.children).forEach(item =>{
   item.addEventListener('click',(e) => {
     let select = packageTypeList.find(x => x.name == e.target.dataset.value)
     updatePackage(select)
-    packageInput.innerText = select.name.charAt(0).toUpperCase() + select.name.slice(1);
+    const packageName = select.name.charAt(0).toUpperCase() + select.name.slice(1);
+    packageInput.innerText = packageName;
+    packageDisplay.children.item(1).innerText = packageName
+    packageDisplay.children.item(2).innerText = `$${select.price}`
+    packageDisplay.style.display = "block"
     packageList.style.display = "none";
     updateTotalPrice() 
   })
@@ -149,7 +152,7 @@ function updatePackage({name,price}){
   },]
 }
 
-
+//Obsługa checkboxow 
 accounting.addEventListener('click',(e)=>{
   if(e.target.checked){
     setCheckbox(e.target.id,10)
@@ -174,6 +177,8 @@ terminal.addEventListener('click',(e)=>{
   }
 })
 
+
+//Zmiana wartości checkbox w values
 function setCheckbox(name,price){
   const newValues = values.filter(x => x.name != name)
     values = [...newValues,{
