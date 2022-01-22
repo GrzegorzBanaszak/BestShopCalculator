@@ -49,7 +49,7 @@ function setInputFilter(textbox, inputFilter,itemText) {
         if(this.value > 0){
           getNewValues(this)
           updateTotalPrice()
-          itemText.style.display = "block"
+          itemText.style.display = "flex"
           itemText.children.item(1).innerText = `${this.value} * $0.5`
           itemText.children.item(2).innerText = `$${this.value * 0.5}`
         }
@@ -84,7 +84,7 @@ function resetValue(item){
 function updateTotalPrice(){
   let total = values.map(x => {return x.price}).reduce((a,b) => a + b)
   if (total > 0){
-    totalPrice.style.display = "block"
+    totalPrice.style.display = "flex"
     totalPrice.children.item(1).innerText = `$${total}`
   }
   else{
@@ -136,7 +136,7 @@ Array.from(packageList.children).forEach(item =>{
     packageInput.innerText = packageName;
     packageDisplay.children.item(1).innerText = packageName
     packageDisplay.children.item(2).innerText = `$${select.price}`
-    packageDisplay.style.display = "block"
+    packageDisplay.style.display = "flex"
     packageList.style.display = "none";
     updateTotalPrice() 
   })
@@ -156,7 +156,7 @@ function updatePackage({name,price}){
 accounting.addEventListener('click',(e)=>{
   if(e.target.checked){
     setCheckbox(e.target.id,10)
-    accountingDisplay.style.display = "block"
+    accountingDisplay.style.display = "flex"
     updateTotalPrice()
   }else{
     setCheckbox(e.target.id,0)
@@ -168,7 +168,7 @@ accounting.addEventListener('click',(e)=>{
 terminal.addEventListener('click',(e)=>{
   if(e.target.checked){
     setCheckbox(e.target.id,10)
-    terminalDisplay.style.display = "block"
+    terminalDisplay.style.display = "flex"
     updateTotalPrice()
   }else{
     setCheckbox(e.target.id,0)
